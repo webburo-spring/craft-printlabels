@@ -13,9 +13,7 @@
 $(document).ready(function(){
     if(dymo_printer !== ''){
         $('#details .order-info-box').before('<a href="#" class="printlabel btn small">PRINT SHIPPING LABEL (DYMO)</a>');
-    } else {
-        $('#details .order-info-box').before('<a href="#" class="printlabel btn small">PRINT SHIPPING LABEL (DYMO)</a>');
-    }
+    } 
     
     $('.printlabel').click(function(){
         var orderId = $('input[name="orderId"]').val();
@@ -24,7 +22,8 @@ $(document).ready(function(){
             $.get("/admin/printlabels", { orderId: orderId } )
             .done(function( data ) {
                 var textTextArea = data.replace(/<br>/g, "\n");
-                printLabel(textTextArea);                
+                printLabel(textTextArea);        
+				location.reload();				
             });
         }
     })
@@ -37,7 +36,6 @@ $(document).ready(function(){
 
 function printLabel(textTextArea)
 {
-    
     if(dymo.label.framework.init) {
 		dymo.label.framework.init(doPrint);			
 	}

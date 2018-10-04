@@ -30,12 +30,24 @@ class Settings extends Model
      */
     public $dymoPrinter;
     
+	/**
+     * @var string
+     */
     public $dymoFont;
     
+	/**
+     * @var integer
+     */
     public $dymoFontSize;
     
+	/**
+     * @var integer
+     */
     public $dymoOrderStatus;
-
+	
+	/**
+     * @var string
+     */
     public $dymoOrderStatusMessage;
 
     // Public Methods

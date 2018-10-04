@@ -13,18 +13,17 @@ namespace webburospring\printlabels;
 use webburospring\printlabels\services\Printlabels as PrintlabelsService;
 use webburospring\printlabels\models\Settings;
 use webburospring\printlabels\assetbundles\printlabels\PrintLabelsAsset;
-use webburospring\printlabels\elementactions\PrintLabelsAction;
+//use webburospring\printlabels\elementactions\PrintLabelsAction; // NOT NOW, MAYBE LATER
 
 use Craft;
 use craft\events\RegisterUrlRulesEvent;
 use craft\events\TemplateEvent;
 use craft\events\ModelEvent;
-use craft\events\RegisterElementActionsEvent;
+//use craft\events\RegisterElementActionsEvent; // NOT NOW, MAYBE LATER
 use craft\web\View;
 use craft\web\UrlManager;
 use craft\db\Query;
 use craft\commerce\elements\Order;
-//use craft\commerce\models\OrderStatus;
 use craft\commerce\Plugin as cPlugin;
 use craft\elements\Entry;
 use craft\services\Plugins;
@@ -105,9 +104,10 @@ class PrintLabels extends Plugin
                 }
             );
             
-            Event::on(Order::class, Element::EVENT_REGISTER_ACTIONS, function(RegisterElementActionsEvent $event) {
+			// NOT NOW, MAYBE LATER
+            /*Event::on(Order::class, Element::EVENT_REGISTER_ACTIONS, function(RegisterElementActionsEvent $event) {
                 $event->actions[] = PrintlabelsAction::class;
-            });
+            });*/
         }
         
         Event::on(
