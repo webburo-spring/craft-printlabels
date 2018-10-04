@@ -44,4 +44,4 @@ NOTE: Order status will be changed, also when the label is not printed correctly
 
 ![Screenvid](resources/screenshot_order.png)
 
-Happy printing!
+Happy printing! :-)
