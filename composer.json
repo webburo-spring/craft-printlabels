@@ -1,0 +1,43 @@
+{
+    "name": "webburospring/print-labels",
+    "description": "Print shipping labels",
+    "type": "craft-plugin",
+    "version": "1.0.0",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "print labels"
+    ],
+    "support": {
+        "docs": "???",
+        "issues": "???"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Webburo Spring",
+            "homepage": "https://www.webburo-spring.nl"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "^3.0.0-RC1"
+    },
+    "autoload": {
+        "psr-4": {
+          "webburospring\\printlabels\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "Print Labels",
+        "handle": "print-labels",
+        "hasCpSettings": true,
+        "hasCpSection": false,
+        "changelogUrl": "???",
+        "components": {
+            "printlabels": "webburospring\\printlabels\\services\\Printlabels"
+        },
+        "class": "webburospring\\printlabels\\PrintLabels"
+    }
+}

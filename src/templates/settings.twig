@@ -1,0 +1,92 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * Print Labels plugin for Craft CMS 3.x
+ *
+ * Print Labels Settings.twig
+ *
+ * @author    Webburo Spring
+ * @copyright Copyright (c) 2018 Webburo Spring
+ * @link      https://www.webburo-spring.nl
+ * @package   PrintLabels
+ * @since     1.0.0
+ */
+#}
+
+{% import "_includes/forms" as forms %}
+
+{% do view.registerAssetBundle("webburospring\\printlabels\\assetbundles\\printlabels\\PrintLabelsAsset") %}
+<h2>Print shippinglabels with a DYMO labelwriter</h2>
+<p>
+    To ensure correct operation of this plugin, it is important that you have DYMO Label Software v8.XX installed and also <a href="http://www.dymo.com/en-US/online-support/dymo-user-guides" target="_blank">"Dymo Label Web Service"</a> is needed. <br />
+    Click <a href="http://labelwriter.com/software/dls/sdk/samples/js/CheckEnvironment/CheckEnvironment.html" target="_blank">here</a> to check if the software is installed correctly and your browser is supported.<br /><br />
+    
+    <i>NOTE: At this moment only the DYMO addresslabel "30252 Address" (99010) is available in the plugin.</i>
+</p>
+<script>
+    var dymo_printer = '{{ settings['dymoPrinter'] }}';
+</script>
+
+{{ forms.selectField({
+    label: 'Select DYMO printer'|t,
+    instructions: 'Select your default DYMO Printer'|t,
+    id: 'dymoPrinter',
+    name: 'dymoPrinter',
+    options: {
+        '': 'Select your DYMO Printer'|t,
+    },
+    value: settings['dymoPrinter'],
+    errors: settings.getErrors('dymoPrinter'),
+}) }}
+
+{{ forms.selectField({
+    label: 'Select Font Style'|t,
+    instructions: 'Select your default Font Style on the label'|t,
+    id: 'dymoFont',
+    name: 'dymoFont',
+    options: {
+        'Arial': 'Arial'|t,
+        'Verdana': 'Verdana'|t,
+        'Calibri': 'Calibri'|t,
+        'Georgia': 'Georgia'|t,
+        'Times New Roman': 'Times New Roman'|t,
+        'Helvetica': 'Helvetica'|t,
+        'sans-serif': 'sans-serif'|t,
+        'Comic Sans MS': 'Comic Sans MS (are you sure?)'|t,
+    },
+    value: settings['dymoFont'],
+    errors: settings.getErrors('dymoFont'),
+}) }}
+
+{{ forms.textField({
+    label: 'Select Font Size'|t,
+    instructions: 'Select your default Font Size on the label'|t,
+    id: 'dymoFontSize',
+    name: 'dymoFontSize',
+    value: settings['dymoFontSize'],
+    errors: settings.getErrors('dymoFontSize'),
+}) }}
+
+{{ forms.selectField({
+    label: 'Order Status'|t,
+    instructions: 'Select order status after print shippinglabel'|t,
+    id: 'dymoOrderStatus',
+    name: 'dymoOrderStatus',
+    options: orderStatuses,
+    value: settings['dymoOrderStatus'],
+    errors: settings.getErrors('dymoOrderStatus'),
+}) }}
+
+{{ forms.textareaField({
+    label: 'Order Status Message'|t,
+    instructions: 'Set message with selected orderstatus after print shippinglabel'|t,
+    id: 'dymoOrderStatusMessage',
+    name: 'dymoOrderStatusMessage',
+    value: settings['dymoOrderStatusMessage'],
+    errors: settings.getErrors('dymoOrderStatusMessage'),
+}) }}
+
+<p>
+    Click on the button below to print a test label. If you have made changes to the settings, save them first. 
+</p>
+<a href="#" class="printtest btn" style="color:green;">PRINT TEST LABEL</a>
