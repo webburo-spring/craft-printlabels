@@ -78,17 +78,26 @@ class DefaultController extends Controller
             $order = cPlugin::getInstance()->getOrders()->getOrderById($orderId);
             if($order)
             {
-              $shippingAddress = $order->getShippingAddress();
-              echo $shippingAddress->firstName.' '.$shippingAddress->lastName."\n".$shippingAddress->address1."\n".$shippingAddress->zipCode.' '.$shippingAddress->city;              
-              if(PrintLabels::$plugin->getSettings()->dymoOrderStatus != '0'){
-                $orderStatus = cPlugin::getInstance()->getOrderStatuses()->getOrderStatusById(PrintLabels::$plugin->getSettings()->dymoOrderStatus);
-                $order->orderStatusId = PrintLabels::$plugin->getSettings()->dymoOrderStatus;
-                $order->message = PrintLabels::$plugin->getSettings()->dymoOrderStatusMessage;  
-                Craft::$app->getElements()->saveElement($order);               
-              }  
+                $shippingAddress = $order->getShippingAddress();
+                $country = cPlugin::getInstance()->getCountries()->getCountryById($shippingAddress->countryId);
+                $storeLocation = cPlugin::getInstance()->getAddresses()->getStoreLocationAddress();
+				
+				// DO NOT PRINT COUNTRY ON THE LABEL WHEN STORE LOCATION IS IN THE SAME COUNTRY AS THE ORDER COUNTRY
+                if($storeLocation->countryId != $shippingAddress->countryId){
+                    echo $shippingAddress->firstName.' '.$shippingAddress->lastName."\n".$shippingAddress->address1."\n".$shippingAddress->zipCode.' '.$shippingAddress->city."\n".$country->name;      
+                } else {
+                    echo $shippingAddress->firstName.' '.$shippingAddress->lastName."\n".$shippingAddress->address1."\n".$shippingAddress->zipCode.' '.$shippingAddress->city; 
+                }
                 
+                if(PrintLabels::$plugin->getSettings()->dymoOrderStatus != '0'){
+                    $orderStatus = cPlugin::getInstance()->getOrderStatuses()->getOrderStatusById(PrintLabels::$plugin->getSettings()->dymoOrderStatus);
+                    $order->orderStatusId = PrintLabels::$plugin->getSettings()->dymoOrderStatus;
+                    $order->message = PrintLabels::$plugin->getSettings()->dymoOrderStatusMessage;  
+                    Craft::$app->getElements()->saveElement($order);               
+                }  
+
             }
         }
-    }       
+    }         
    
 }
