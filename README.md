@@ -13,6 +13,8 @@ You must have a DYMO LabelWriter 400 or 450 series connected directly to your co
 
 Click [here](http://labelwriter.com/software/dls/sdk/samples/js/CheckEnvironment/CheckEnvironment.html) to check if the software is installed correctly and your browser is supported.  
 
+Please note, we do not offer support when installing a DYMO Labelwriter!
+
 ## Installation
 
 Install the plugin in the Craft plugin Store.
