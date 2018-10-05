@@ -11,8 +11,8 @@
         "print labels"
     ],
     "support": {
-        "docs": "???",
-        "issues": "???"
+        "docs": "https://github.com/webburo-spring/craft-printlabels/blob/master/README.md",
+        "issues": "https://github.com/webburo-spring/craft-printlabels/issues"
     },
     "license": "MIT",
     "authors": [
@@ -34,7 +34,7 @@
         "handle": "print-labels",
         "hasCpSettings": true,
         "hasCpSection": false,
-        "changelogUrl": "???",
+        "changelogUrl": "https://github.com/webburo-spring/craft-printlabels/blob/master/CHANGELOG.md",
         "components": {
             "printlabels": "webburospring\\printlabels\\services\\Printlabels"
         },
