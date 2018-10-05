@@ -1,13 +1,12 @@
 <?php
 /**
- * Print Labels plugin for Craft CMS 3.x
+ * Print Labels for Craft CMS 3.x
  *
- * Print shipping labels
+ * 
  *
- * @link      https://www.webburo-spring.nl
+ * @link      https://www.webburo-spring.nl.nl
  * @copyright Copyright (c) 2018 Webburo Spring
  */
-
 
 namespace webburospring\printlabels\elementactions;
 

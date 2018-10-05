@@ -21,7 +21,7 @@
     To ensure correct operation of this plugin, it is important that you have DYMO Label Software v8.XX installed and also <a href="http://www.dymo.com/en-US/online-support/dymo-user-guides" target="_blank">"Dymo Label Web Service"</a> is needed. <br />
     Click <a href="http://labelwriter.com/software/dls/sdk/samples/js/CheckEnvironment/CheckEnvironment.html" target="_blank">here</a> to check if the software is installed correctly and your browser is supported.<br /><br />
     
-    <i>NOTE: At this moment only the DYMO address label "30252 Address" (99010) is available in the plugin.</i>
+    <i>NOTE: Only the DYMO address label "30252 Address" (99010) and "30321 Large Address" (99012) are supported in the plugin.</i>
 </p>
 <script>
     var dymo_printer = '{{ settings['dymoPrinter'] }}';
@@ -37,6 +37,19 @@
     },
     value: settings['dymoPrinter'],
     errors: settings.getErrors('dymoPrinter'),
+}) }}
+
+{{ forms.selectField({
+    label: 'Select Label'|t,
+    instructions: 'Select your DYMO label'|t,
+    id: 'dymoLabelId',
+    name: 'dymoLabelId',
+    options: {
+        'Address': '30252 Address (99010)'|t,
+        'LargeAddress': '30321 Large Address (99012)'|t,
+    },
+    value: settings['dymoLabelId'],
+    errors: settings.getErrors('dymoLabelId'),
 }) }}
 
 {{ forms.selectField({

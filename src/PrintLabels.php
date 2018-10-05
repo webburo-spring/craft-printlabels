@@ -92,6 +92,7 @@ class PrintLabels extends Plugin
                     // Load JS file
                     //if(isset($this->getSettings()->dymoPrinter) && !empty($this->getSettings()->dymoPrinter)){
                         $js = trim('var dymo_printer = "'.$this->getSettings()->dymoPrinter.'"'."\r\n".
+                                   'var dymo_labelId = "'.$this->getSettings()->dymoLabelId.'"'."\r\n".
                                    'var dymo_fonttype = "'.$this->getSettings()->dymoFont.'"'."\r\n".
                                    'var dymo_fontsize = "'.$this->getSettings()->dymoFontSize.'"'."\r\n"
                                   );

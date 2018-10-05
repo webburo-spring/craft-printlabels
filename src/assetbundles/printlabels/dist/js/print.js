@@ -11,45 +11,70 @@
  */
 
 $(document).ready(function(){
-    if(dymo_printer !== ''){
+    if(dymo_printer !== '' && dymo_labelId !== ''){
         $('#details .order-info-box').before('<a href="#" class="printlabel btn small">PRINT SHIPPING LABEL (DYMO)</a>');
     } 
     
     $('.printlabel').click(function(){
         var orderId = $('input[name="orderId"]').val();
-        var addressLabel;
         if(orderId){
             $.get("/admin/printlabels", { orderId: orderId } )
             .done(function( data ) {
                 var textTextArea = data.replace(/<br>/g, "\n");
-                printLabel(textTextArea);        
+                printLabel(textTextArea, dymo_labelId);        
 				location.reload();				
             });
         }
     })
     
     $('.printtest').click(function(){
-        var textTextArea = 'firstName lastName\n'+'Street 12345\n'+'Zipcode City\n';
-        printLabel(textTextArea);  
+        var textTextArea = 'firstName lastName\n'+'Street 12345\n'+'Zipcode City\n'+'Country\n';
+        printLabel(textTextArea, dymo_labelId);  
     })
 })
 
-function printLabel(textTextArea)
+function printLabel(textTextArea, dymo_labelId)
 {
     if(dymo.label.framework.init) {
 		dymo.label.framework.init(doPrint);			
 	}
     
     function doPrint(){
+		
+        var PaperName;
+        var width;
+        var height;
+        var boundX;
+        var boundY;			
+        var boundWidth;
+        var boundHeight;
         
+		if(dymo_labelId == 'Address'){
+			PaperName = '30252 Address';
+			width = 1581;
+			height = 5040;
+			boundX = 332;
+			boundY = 150;			
+			boundWidth = 4455;
+			boundHeight = 1260;
+		} else {
+			PaperName = '30321 Large Address';
+			width = 2025;
+			height = 5020;
+			boundX = 322;
+			boundY = 57.9999999999999;			
+			boundWidth = 4613;
+			boundHeight = 1882;
+		}
+		
         var labelXml = '<?xml version="1.0" encoding="utf-8"?>\
                         <DieCutLabel Version="8.0" Units="twips">\
                             <PaperOrientation>Landscape</PaperOrientation>\
-                            <Id>Address</Id>\
-                            <PaperName>30252 Address</PaperName>\
+                            <Id>'+dymo_labelId+'</Id>\
+                            <PaperName>'+PaperName+'</PaperName>\
                             <DrawCommands>\
-                                <RoundRectangle X="0" Y="0" Width="1581" Height="5040" Rx="270" Ry="270" />\
-                            </DrawCommands>\
+							<RoundRectangle X="0" Y="0" Width="'+width+'" Height="'+height+'" Rx="270" Ry="270" />\
+							</DrawCommands>\
                             <ObjectInfo>\
                                 <AddressObject>\
                                 <Name>Address</Name>\
@@ -79,7 +104,7 @@ function printLabel(textTextArea)
                                     <Font Family="'+dymo_fonttype+'" Size="'+dymo_fontsize+'" Bold="False" Italic="False" Underline="False" Strikeout="False" />\
                                 </LineFonts>\
                                 </AddressObject>\
-                                <Bounds X="332" Y="150" Width="4455" Height="1260" />\
+                                <Bounds X="'+boundX+'" Y="'+boundY+'" Width="'+boundWidth+'" Height="'+boundHeight+'" />\
                             </ObjectInfo>\
                         </DieCutLabel>';
         

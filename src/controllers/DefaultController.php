@@ -80,6 +80,7 @@ class DefaultController extends Controller
             {
                 $shippingAddress = $order->getShippingAddress();
                 $country = cPlugin::getInstance()->getCountries()->getCountryById($shippingAddress->countryId);
+                    
                 $storeLocation = cPlugin::getInstance()->getAddresses()->getStoreLocationAddress();
 				
 				// DO NOT PRINT COUNTRY ON THE LABEL WHEN STORE LOCATION IS IN THE SAME COUNTRY AS THE ORDER COUNTRY
@@ -98,6 +99,5 @@ class DefaultController extends Controller
 
             }
         }
-    }         
-   
+    }
 }

@@ -33,6 +33,11 @@ class Settings extends Model
 	/**
      * @var string
      */
+    public $dymoLabelId;
+    
+	/**
+     * @var string
+     */
     public $dymoFont;
     
 	/**
@@ -61,6 +66,8 @@ class Settings extends Model
         return [
             ['dymoPrinter', 'string'],
             ['dymoPrinter', 'default', 'value' => ''],
+			['dymoLabelId', 'string'],
+            ['dymoLabelId', 'default', 'value' => 'Address'],
             ['dymoFont', 'string'],
             ['dymoFont', 'default', 'value' => 'Verdana'], 
             ['dymoFontSize', 'integer'],
