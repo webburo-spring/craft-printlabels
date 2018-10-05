@@ -89,7 +89,7 @@ class DefaultController extends Controller
                 } else {
                     echo $shippingAddress->firstName.' '.$shippingAddress->lastName."\n".$shippingAddress->address1."\n".$shippingAddress->zipCode.' '.$shippingAddress->city; 
                 }
-                
+                // SET NEW ORDER STATUS
                 if(PrintLabels::$plugin->getSettings()->dymoOrderStatus != '0'){
                     $orderStatus = cPlugin::getInstance()->getOrderStatuses()->getOrderStatusById(PrintLabels::$plugin->getSettings()->dymoOrderStatus);
                     $order->orderStatusId = PrintLabels::$plugin->getSettings()->dymoOrderStatus;
