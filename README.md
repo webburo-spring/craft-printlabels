@@ -32,7 +32,7 @@ To install the plugin, follow these instructions.
 Use the plugin settings page to select the installed DYMO labelprinter, select label, set font style and font size.
 You can also select a shipping status (including message) where the order should be set after printing the label.
 
-![Screenvid](resources/screenshot_settings.png)
+![Screenvid](resources/screenshot_settings_051018.png)
 
 NOTE: Only the DYMO address label "30252 Address" (99010) and "30321 Large Address" (99012) are supported in the plugin..
 
