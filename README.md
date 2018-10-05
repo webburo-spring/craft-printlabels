@@ -15,17 +15,9 @@ Click [here](http://labelwriter.com/software/dls/sdk/samples/js/CheckEnvironment
 
 ## Installation
 
-To install the plugin, follow these instructions.
+Install the plugin in the Craft plugin Store.
 
-1. Open your terminal and go to your Craft project:
-
-        cd /path/to/project
-
-2. Then tell Composer to load the plugin:
-
-        composer require webburo-spring/craft-printlabels
-
-3. In the Control Panel, go to Settings → Plugins and click the “Install” button.
+In the Control Panel, go to Settings → Plugins and click the “Install” button.
 
 ## Configuring DYMO shipping label plugin
 
