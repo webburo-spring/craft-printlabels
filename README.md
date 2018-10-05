@@ -6,8 +6,10 @@ With this plugin you can easily print shipping labels with a DYMO label printer.
 This plugin requires 
 - Craft CMS 3.0.0 or later.
 - Craft Commerce 2
+- DYMO LabelWriter 400 / DYMO LabelWriter 450
 
 To ensure correct operation of this plugin, it is important that you have DYMO Label Software v8.XX installed and also ["Dymo Label Web Service"](http://www.dymo.com/en-US/online-support/dymo-user-guides) is needed. 
+You must have a DYMO LabelWriter 400 or 450 series connected directly to your computer.
 
 Click [here](http://labelwriter.com/software/dls/sdk/samples/js/CheckEnvironment/CheckEnvironment.html) to check if the software is installed correctly and your browser is supported.  
 
@@ -27,12 +29,12 @@ To install the plugin, follow these instructions.
 
 ## Configuring DYMO shipping label plugin
 
-Use the plugin settings page to select the installed DYMO labelprinter, set font style and font size.
+Use the plugin settings page to select the installed DYMO labelprinter, select label, set font style and font size.
 You can also select a shipping status (including message) where the order should be set after printing the label.
 
 ![Screenvid](resources/screenshot_settings.png)
 
-NOTE: At this moment only the DYMO address label "30252 Address" (99010) is available in the plugin.
+NOTE: Only the DYMO address label "30252 Address" (99010) and "30321 Large Address" (99012) are supported in the plugin..
 
 ## Using DYMO shipping label plugin
 
